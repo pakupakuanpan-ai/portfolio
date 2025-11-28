@@ -1,0 +1,12 @@
+/* ===== スマホ ===== */
+@media (max-width: 768px) {
+  .works-detail {
+    grid-template-columns: 1fr;
+  }
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-body img {
+    width: 100%;
+  }
+}

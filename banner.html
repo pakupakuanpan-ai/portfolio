@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7faf8;
+      --main: #cfe9da;
+      --accent: #9bcfb0;
+      --text: #3d5347;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #4a7b60;
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    header p {
+      margin-top: 6px;
+      color: #5e7467;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      color: #4a7b60;
+      background: #e6f3ea;
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .back-btn:hover {
+      background: #d4ecdf;
+    }
+
+    .back-btn-container {
+      text-align: center;
+      margin: 50px 0 60px;
+    }
+
+    .works {
+      max-width: 1000px;
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      padding: 0 20px;
+    }
+
+    .work-item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 6px 16px rgba(155, 207, 176, 0.15);
+      padding: 30px;
+    }
+
+    .work-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .work-item img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .text {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .text h2 {
+      font-size: 1.3rem;
+      color: #3f6954;
+      margin-bottom: 10px;
+    }
+
+    .text p {
+      font-size: 0.95rem;
+      color: #62776b;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      color: #7a8a80;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Banner</h1>
+    <p>バナーデザイン</p>
+    <a href="index.html" class="back-btn">← 戻る</a>
+  </header>
+
+  <main class="works">
+    <div class="work-item">
+      <img src="images/banner1.jpg" alt="美容液キャンペーンバナー">
+      <div class="text">
+        <h2>UVの広告バナー</h2>
+        <p>さわやかさを伝えるために、夏の青空と水しぶきのイメージを背景にしました。モデルは生成AIで、架空の広告デザインとして制作しました。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/banner2.jpg" alt="カフェフェア告知バナー">
+      <div class="text">
+        <h2>美容液のLINE配信用イメージ</h2>
+        <p>ターゲットは30〜40代の女性、毛穴ケア・美白・ハリを求める層をイメージしました。ビタミンC配合美容液の魅力を、フレッシュな色使いで伝えたいと思い作成しました。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/banner3.jpg" alt="旅行セールバナー">
+      <div class="text">
+        <h2>美容バナー</h2>
+        <p>エイジングケアを意識して制作しました。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/banner4.jpg" alt="スキンケアブランドバナー">
+      <div class="text">
+        <h2>美容バナー</h2>
+        <p>手書き風文字で、親しみやすさを表現しました。<br>色味や、細かい部分のデザイン調整にこだわりました。</p>
+      </div>
+    </div>
+
+     <div class="work-item">
+      <img src="images/banner5.jpg" alt="美容液キャンペーンバナー">
+      <div class="text">
+        <h2>ポイント10倍</h2>
+        <p>10倍のインパクトをポイントに作成しました。</p>
+      </div>
+    </div>
+
+     <div class="work-item">
+      <img src="images/banner6.jpg" alt="美容液キャンペーンバナー">
+      <div class="text">
+        <h2>楽天用サムネイル</h2>
+        <p>めんたいこギフト広告で高級感・贈答用イメージの訴求しました。<br>楽天用第一サムネイルとして作成しました。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/banner7.jpg" alt="美容液キャンペーンバナー">
+      <div class="text">
+        <h2>美容・インナーウェア広告</h2>
+        <p>睡眠時のバストケアをイメージしました。<br>安心感・夜のリラックス感を演出しました。</p>
+      </div>
+    </div>
+
+     <div class="work-item">
+      <img src="images/banner8.jpg" alt="美容液キャンペーンバナー">
+      <div class="text">
+        <h2>マスクの広告</h2>
+        <p>ウイルスから体を守ることと、緊迫した雰囲気をだしました。</p>
+      </div>
+    </div>
+  </main>
+  <div class="back-btn-container">
+    <a href="index.html" class="back-btn">← 戻る</a>
+  </div>
+</body>
+</html>

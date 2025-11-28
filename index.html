@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7faf8;
+      --main: #cfe9da;
+      --accent: #9bcfb0;
+      --text: #3d5347;
+    }
+    body {
+      margin: 0;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: #4a7b60;
+      letter-spacing: 0.05em;
+    }
+    header p {
+      margin-top: 8px;
+      color: #5e7467;
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      justify-items: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      width: 240px;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 6px 16px rgba(155, 207, 176, 0.15);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 22px rgba(155, 207, 176, 0.25);
+    }
+
+    .thumb {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      margin: 24px auto 0;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin: 16px 0 4px;
+      color: #3f6954;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #63756a;
+      padding-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 14px;
+      color: #7a8a80;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Design Portfolio</h1>
+    <p>デザインポートフォリオ</p>
+  </header>
+
+  <main>
+    <a href="banner.html" class="card">
+      <div class="thumb"><img src="images/banner1.jpg" alt="バナー作品"></div>
+      <h2>Banner</h2>
+      <p>広告バナー</p>
+    </a>
+
+    <a href="paper.html" class="card">
+      <div class="thumb"><img src="images/paper1.jpg" alt="紙作品"></div>
+      <h2>Paper</h2>
+      <p>紙デザイン</p>
+    </a>
+
+    <a href="web.html" class="card">
+      <div class="thumb"><img src="images/web1.jpg" alt="ウェブ作品"></div>
+      <h2>Web</h2>
+      <p>LP・サイトデザイン</p>
+    </a>
+  </main>
+
+</body>
+</html>
