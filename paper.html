@@ -44,7 +44,6 @@
       transition: background 0.2s;
     }
 
-    /* 作品リスト形式のスタイル */
     .works {
       max-width: 900px;
       margin: 50px auto;
@@ -63,9 +62,12 @@
       box-shadow: 0 6px 16px rgba(155, 207, 176, 0.15);
       padding: 25px;
     }
+    .work-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
     .work-item img {
       width: 100%;
-      max-width: 350px;
+      max-width: 380px;
       border-radius: 20px;
       cursor: pointer;
       transition: transform 0.3s ease;
@@ -74,7 +76,22 @@
       transform: scale(1.02);
     }
 
-    /* 🌿 モーダル背景（サイドバー等を隠し、全体を覆う） */
+    .text {
+      flex: 1;
+      min-width: 260px;
+    }
+    .text h2 {
+      font-size: 1.2rem;
+      color: #3f6954;
+      margin-bottom: 8px;
+    }
+    .text p {
+      font-size: 0.95rem;
+      color: #62776b;
+      line-height: 1.6;
+    }
+
+    /* 🌿 モーダル背景 */
     .modal {
       display: none;
       position: fixed;
@@ -83,29 +100,28 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.9); /* 白背景でスッキリ */
-      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.85); 
+      backdrop-filter: blur(6px);
       justify-content: center;
       align-items: center;
     }
 
-    /* 🌿 モーダル中身：サイズを60%程度に絞る */
+    /* 🌿 モーダル中身：サイズを60%程度に */
     .modal-content {
       position: relative;
       background: #ffffff;
-      padding: 2.5rem;
+      padding: 2rem;
       border-radius: 30px;
-      /* ここでサイズを調整 */
       width: 60%; 
-      max-width: 500px; 
-      max-height: 80vh;
+      max-width: 550px; 
+      max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
       text-align: center;
       animation: zoomIn 0.3s ease;
-      /* スクロールバーを隠す */
-      -ms-overflow-style: none;
+      /* サイドバー隠し */
       scrollbar-width: none;
+      -ms-overflow-style: none;
     }
     .modal-content::-webkit-scrollbar {
       display: none;
@@ -114,14 +130,14 @@
     .modal-content img {
       width: 100%;
       border-radius: 15px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .close {
       position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 1.8rem;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
       color: #9bcfb0;
       cursor: pointer;
     }
@@ -133,7 +149,7 @@
 
     .back-btn-container {
       text-align: center;
-      margin: 50px 0;
+      margin: 50px 0 60px;
     }
   </style>
 </head>
@@ -147,13 +163,41 @@
 
   <main class="works">
     <div class="work-item">
-      <img src="images/paper1.jpg" alt="チラシ" class="work-img" data-title="保育園のチラシ" data-desc="架空の保育園イベント用A4チラシです。">
+      <img src="images/paper1.jpg" alt="イベントチラシ" class="work-img" 
+           data-title="保育園のチラシA4(架空)" data-desc="優しい色使いを意識した、親しみやすいデザインです。">
       <div class="text">
         <h2>保育園のチラシA4(架空)</h2>
-        <p>優しい色使いを意識しました。</p>
+        <p>クリックで拡大します。</p>
       </div>
     </div>
-    </main>
+
+    <div class="work-item">
+      <img src="images/paper2.png" alt="キャラクター" class="work-img"
+           data-title="キャラクターデザイン" data-desc="相談支援事業所「あもの会」のマスコットキャラクター。">
+      <div class="text">
+        <h2>キャラクター</h2>
+        <p>相談支援事業所「あもの会」のマスコットキャラクター。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/paper3.jpg" alt="節分" class="work-img"
+           data-title="節分 包装" data-desc="和の雰囲気を感じさせる節分用の限定パッケージデザインです。">
+      <div class="text">
+        <h2>節分 包装</h2>
+        <p>季節感のあるデザイン。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/paper4.jpg" alt="クーポン" class="work-img"
+           data-title="クーポン券" data-desc="ブランドカラーを活かし、清潔感と特別感を演出しました。">
+      <div class="text">
+        <h2>クーポン</h2>
+        <p>ブランドカラーをイメージしました。</p>
+      </div>
+    </div>
+  </main>
 
   <div id="modal" class="modal">
     <div class="modal-content">
@@ -177,7 +221,7 @@
         modal.style.display = 'flex';
         modalImg.src = img.src;
         modalTitle.textContent = img.dataset.title;
-        modalDesc.textContent = img.dataset.desc;
+        modalDesc.innerHTML = img.dataset.desc;
         document.body.style.overflow = 'hidden'; 
       });
     });
