@@ -10,3 +10,12 @@
     width: 100%;
   }
 }
+
+/* UVバナー専用のサイズ設定（60%） */
+    .modal-content.is-uv-small {
+      width: 40%; /* 枠そのものを少しスリムに */
+      max-width: 400px;
+    }
+    .modal-content.is-uv-small img {
+      width: 100%; /* 中の画像は枠いっぱいに */
+    }
