@@ -216,15 +216,18 @@
     const modalDesc = document.getElementById('modal-desc');
     const closeBtn = document.querySelector('.close');
 
-    images.forEach(img => {
+   images.forEach(img => {
       img.addEventListener('click', () => {
         modal.style.display = 'flex';
         modalImg.src = img.src;
         modalTitle.textContent = img.dataset.title;
         modalDesc.innerHTML = img.dataset.desc;
         
-        // ★ ここを追加：開くたびに一番上へスクロールさせる
-        modal.scrollTop = 0; 
+        // ★ 内側の白い箱（modal-content）を一番上まで戻す命令
+        const modalBody = document.querySelector('.modal-content');
+        if (modalBody) {
+          modalBody.scrollTop = 0;
+        }
         
         document.body.style.overflow = 'hidden'; 
       });
