@@ -4,41 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web</title>
-  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #f7faf8;
-      --main: #cfe9da;
-      --accent: #9bcfb0;
       --text: #3d5347;
     }
-
     body {
       margin: 0;
       font-family: 'Zen Maru Gothic', sans-serif;
       background: var(--bg);
       color: var(--text);
     }
-
     header {
       padding: 40px 20px 20px;
       text-align: center;
     }
-
-    header h1 {
-      color: #4a7b60;
-      font-size: 1.8rem;
-      margin: 0;
-    }
-
-    header p {
-      margin-top: 6px;
-      color: #5e7467;
-      font-size: 0.95rem;
-    }
-
+    header h1 { color: #4a7b60; font-size: 1.8rem; margin: 0; }
     .back-btn {
       display: inline-block;
       margin-top: 12px;
@@ -48,110 +30,79 @@
       padding: 6px 14px;
       border-radius: 18px;
       font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-    .back-btn:hover {
-      background: #d4ecdf;
     }
 
-    .back-btn-container {
-      text-align: center;
-      margin: 50px 0 60px;
-    }
-
-    /* ==== 作品エリア ==== */
+    /* 作品グリッド */
     .works-detail {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 2rem;
-      padding: 3rem 1rem 5rem;
+      padding: 3rem 1rem;
     }
-
     .work-img {
       width: 80%;
       max-width: 360px;
       aspect-ratio: 1 / 1;
       object-fit: cover;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
-    .work-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    }
+    .work-img:hover { transform: scale(1.03); }
 
-    /* 🌿 モーダル背景（整理しました） */
+    /* 🌿 モーダル背景：画面全体を覆い、中央寄せにする */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 2000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(247,250,248,0.9));
-      backdrop-filter: blur(4px);
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
+      background: rgba(0, 0, 0, 0.1); /* ほんのりグレーで背景を沈める */
+      backdrop-filter: blur(8px);    /* 背景をボカす */
+      justify-content: center;      /* 左右中央 */
+      align-items: center;          /* 上下中央 */
     }
 
-    /* 🌿 モーダル内容（白いカード風） */
+    /* 🌿 白い枠（モーダル中身）：ここが「枠の中」に見えるポイント */
     .modal-content {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       background: #ffffff;
-      border-radius: 24px;
-      padding: 2rem;
-      width: 60%;
-      max-width: 700px;
-      max-height: 75vh;
-      overflow-y: auto;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      scrollbar-width: none;
-      animation: fadeIn 0.4s ease;
+      padding: 30px;               /* 枠の中の均等な余白 */
+      border-radius: 30px;
+      width: 60%;                  /* 全体の60%サイズ */
+      max-width: 600px;
+      max-height: 80vh;            /* 画面からはみ出さない高さ */
+      overflow-y: auto;            /* 中身が長い時はスクロール */
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: zoomIn 0.3s ease;
+      scrollbar-width: none;       /* スクロールバーを消す */
     }
-
-    .modal-content::-webkit-scrollbar {
-      display: none;
-    }
+    .modal-content::-webkit-scrollbar { display: none; }
 
     .modal-content img {
       width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-    }
-
-    .modal-content h2 {
-      color: #3f6954;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-    }
-
-    .modal-content p {
-      color: #63756a;
-      font-size: 1rem;
-      line-height: 1.6;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
     }
 
     .close {
       position: absolute;
       top: 15px;
-      right: 25px;
-      font-size: 2rem;
-      color: #79b8a1;
+      right: 20px;
+      font-size: 1.8rem;
+      color: #9bcfb0;
       cursor: pointer;
-      z-index: 10;
+      line-height: 1;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
@@ -159,20 +110,20 @@
 
   <header>
     <h1>Web</h1>
-    <p class="subtitle">Webサイト・LP</p>
+    <p>Webサイト・LP</p>
     <a href="index.html" class="back-btn">← 戻る</a>
   </header>
 
   <main class="works-detail">
-    <img src="images/web1.jpg" alt="Web1" class="work-img" data-title="みやざきPRページ" data-desc="">
-    <img src="images/web2.jpg" alt="Web2" class="work-img" data-title="補整下着の記事LP" data-desc="">
-    <img src="images/web3.jpg" alt="Web3" class="work-img" data-title="メルマガ" data-desc="ステップメール">
+    <img src="images/web1.jpg" class="work-img" data-title="みやざきPRページ" data-desc="地域の魅力を伝えるLPです。">
+    <img src="images/web2.jpg" class="work-img" data-title="補整下着の記事LP" data-desc="構成からデザインまで担当しました。">
+    <img src="images/web3.jpg" class="work-img" data-title="メルマガ" data-desc="ステップメールのデザインです。">
   </main>
 
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <img id="modal-img" src="" alt="">
+      <img id="modal-img" src="">
       <h2 id="modal-title"></h2>
       <p id="modal-desc"></p>
     </div>
@@ -181,7 +132,7 @@
   <script>
     const images = document.querySelectorAll('.work-img');
     const modal = document.getElementById('modal');
-    const modalContent = document.querySelector('.modal-content'); // 追加
+    const modalContent = document.querySelector('.modal-content');
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
     const modalDesc = document.getElementById('modal-desc');
@@ -192,14 +143,12 @@
         modal.style.display = 'flex';
         modalImg.src = img.src;
         modalTitle.textContent = img.dataset.title;
-        modalDesc.innerHTML = img.dataset.desc;
+        modalDesc.textContent = img.dataset.desc;
         
-        // ★ ここが重要：白い箱の中身を一番上にリセットする
-        if (modalContent) {
-          modalContent.scrollTop = 0;
-        }
-
-        document.body.style.overflow = 'hidden';
+        // ★ 毎回一番上に戻す命令
+        modalContent.scrollTop = 0;
+        
+        document.body.style.overflow = 'hidden'; 
       });
     });
 
@@ -209,13 +158,7 @@
     };
 
     closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', e => {
-      if (e.target === modal) closeModal();
-    });
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   </script>
-  
-  <div class="back-btn-container">
-    <a href="index.html" class="back-btn">← 戻る</a>
-  </div>
 </body>
 </html>
