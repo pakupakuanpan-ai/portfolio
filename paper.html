@@ -43,121 +43,97 @@
       font-size: 0.9rem;
       transition: background 0.2s;
     }
-    .back-btn:hover {
-      background: #d4ecdf;
-    }
 
+    /* 作品リスト形式のスタイル */
     .works {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 50px auto;
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 40px;
       padding: 0 20px;
     }
-
     .work-item {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
+      gap: 30px;
       align-items: center;
       background: white;
       border-radius: 30px;
       box-shadow: 0 6px 16px rgba(155, 207, 176, 0.15);
-      padding: 30px;
-    }
-    .work-item:nth-child(even) {
-      flex-direction: row-reverse;
+      padding: 25px;
     }
     .work-item img {
       width: 100%;
-      max-width: 420px;
-      border-radius: 24px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      cursor: pointer; /* クリックできることを示す */
+      max-width: 350px;
+      border-radius: 20px;
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
     .work-item img:hover {
       transform: scale(1.02);
     }
 
-    .text {
-      flex: 1;
-      min-width: 260px;
-    }
-    .text h2 {
-      font-size: 1.3rem;
-      color: #3f6954;
-      margin-bottom: 10px;
-    }
-    .text p {
-      font-size: 0.95rem;
-      color: #62776b;
-      line-height: 1.8;
-    }
-
-    /* ==== モーダルCSS (Webページから移植) ==== */
+    /* 🌿 モーダル背景（サイドバー等を隠し、全体を覆う） */
     .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
+      z-index: 2000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #ffffff, #f7faf8);
-      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.9); /* 白背景でスッキリ */
+      backdrop-filter: blur(8px);
       justify-content: center;
       align-items: center;
-      overflow-y: auto;
-      padding: 2rem;
     }
+
+    /* 🌿 モーダル中身：サイズを60%程度に絞る */
     .modal-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 2rem;
-      width: 90%;
-      max-width: 700px;
-      max-height: 85vh;
-      overflow-y: auto;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       position: relative;
-      animation: fadeIn 0.4s ease;
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 30px;
+      /* ここでサイズを調整 */
+      width: 60%; 
+      max-width: 500px; 
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: zoomIn 0.3s ease;
+      /* スクロールバーを隠す */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
+    .modal-content::-webkit-scrollbar {
+      display: none;
+    }
+
     .modal-content img {
       width: 100%;
-      border-radius: 12px;
-      margin-bottom: 1rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
     }
-    .modal-content h2 {
-      color: #3f6954;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-    }
-    .modal-content p {
-      color: #63756a;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+
     .close {
       position: absolute;
-      top: 15px;
+      top: 20px;
       right: 25px;
-      font-size: 2rem;
-      color: #79b8a1;
+      font-size: 1.8rem;
+      color: #9bcfb0;
       cursor: pointer;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .back-btn-container {
       text-align: center;
-      margin: 50px 0 60px;
+      margin: 50px 0;
     }
   </style>
 </head>
@@ -165,52 +141,24 @@
 
   <header>
     <h1>Paper</h1>
-    <p>紙</p>
+    <p>紙のデザイン</p>
     <a href="index.html" class="back-btn">← 戻る</a>
   </header>
 
   <main class="works">
     <div class="work-item">
-      <img src="images/paper1.jpg" alt="イベントチラシ" class="work-img" 
-           data-title="保育園のチラシA4(架空)" data-desc="チラシの詳細説明がここに入ります。">
+      <img src="images/paper1.jpg" alt="チラシ" class="work-img" data-title="保育園のチラシ" data-desc="架空の保育園イベント用A4チラシです。">
       <div class="text">
         <h2>保育園のチラシA4(架空)</h2>
-        <p>クリックすると拡大します。</p>
+        <p>優しい色使いを意識しました。</p>
       </div>
     </div>
-
-    <div class="work-item">
-      <img src="images/paper2.png" alt="キャラクター" class="work-img"
-           data-title="キャラクター" data-desc="相談支援事業所「あもの会」のマスコットキャラクター。">
-      <div class="text">
-        <h2>キャラクター</h2>
-        <p>相談支援事業所「あもの会」のマスコットキャラクター。</p>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <img src="images/paper3.jpg" alt="紙" class="work-img"
-           data-title="節分 包装" data-desc="節分用のパッケージデザインです。">
-      <div class="text">
-        <h2>節分 包装</h2>
-        <p>節分　包装</p>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <img src="images/paper4.jpg" alt="紙" class="work-img"
-           data-title="クーポン" data-desc="ブランドカラーをイメージしたクーポンデザイン。">
-      <div class="text">
-        <h2>クーポン</h2>
-        <p>ブランドカラーをイメージしました。</p>
-      </div>
-    </div>
-  </main>
+    </main>
 
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <img id="modal-img" src="" alt="">
+      <img id="modal-img" src="">
       <h2 id="modal-title"></h2>
       <p id="modal-desc"></p>
     </div>
@@ -228,29 +176,23 @@
       img.addEventListener('click', () => {
         modal.style.display = 'flex';
         modalImg.src = img.src;
-        // data-title と data-desc から中身を取得してモーダルに入れる
-        modalTitle.textContent = img.dataset.title || "";
-        modalDesc.innerHTML = img.dataset.desc || "";
-        document.body.style.overflow = 'hidden'; // 背景固定
+        modalTitle.textContent = img.dataset.title;
+        modalDesc.textContent = img.dataset.desc;
+        document.body.style.overflow = 'hidden'; 
       });
     });
 
-    closeBtn.addEventListener('click', () => {
+    const closeModal = () => {
       modal.style.display = 'none';
       document.body.style.overflow = '';
-    });
+    };
 
-    window.addEventListener('click', e => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-    });
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   </script>
-  
+
   <div class="back-btn-container">
     <a href="index.html" class="back-btn">← 戻る</a>
   </div>
-
 </body>
 </html>
