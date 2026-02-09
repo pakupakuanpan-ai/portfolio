@@ -8,35 +8,21 @@
   <style>
     :root {
       --bg: #f7faf8;
-      --main: #cfe9da;
-      --accent: #9bcfb0;
       --text: #3d5347;
     }
-
     body {
       margin: 0;
       font-family: 'Zen Maru Gothic', sans-serif;
       background: var(--bg);
       color: var(--text);
     }
-
     header {
       padding: 40px 20px 20px;
       text-align: center;
     }
-
-    header h1 {
-      color: #4a7b60;
-      font-size: 1.8rem;
-      margin: 0;
-    }
-
-    header p {
-      margin-top: 6px;
-      color: #5e7467;
-      font-size: 0.95rem;
-    }
-
+    header h1 { color: #4a7b60; font-size: 1.8rem; margin: 0; }
+    header p { margin-top: 6px; color: #5e7467; font-size: 0.95rem; }
+    
     .back-btn {
       display: inline-block;
       margin-top: 12px;
@@ -48,69 +34,94 @@
       font-size: 0.9rem;
       transition: background 0.2s;
     }
-    .back-btn:hover {
-      background: #d4ecdf;
-    }
-
-    .back-btn-container {
-      text-align: center;
-      margin: 50px 0 60px;
-    }
 
     .works {
       max-width: 1000px;
       margin: 50px auto;
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 40px;
       padding: 0 20px;
     }
 
     .work-item {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
+      gap: 30px;
       align-items: center;
       background: white;
       border-radius: 30px;
       box-shadow: 0 6px 16px rgba(155, 207, 176, 0.15);
-      padding: 30px;
+      padding: 25px;
     }
-
-    .work-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
+    .work-item:nth-child(even) { flex-direction: row-reverse; }
 
     .work-item img {
       width: 100%;
-      max-width: 420px;
-      border-radius: 24px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      max-width: 380px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .work-item img:hover { transform: scale(1.02); }
+
+    .text { flex: 1; min-width: 260px; }
+    .text h2 { font-size: 1.2rem; color: #3f6954; margin-bottom: 8px; }
+    .text p { font-size: 0.95rem; color: #62776b; line-height: 1.6; }
+
+    /* 🌿 モーダル背景 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
     }
 
-    .text {
-      flex: 1;
-      min-width: 260px;
-    }
-
-    .text h2 {
-      font-size: 1.3rem;
-      color: #3f6954;
-      margin-bottom: 10px;
-    }
-
-    .text p {
-      font-size: 0.95rem;
-      color: #62776b;
-      line-height: 1.8;
-    }
-
-    footer {
+    /* 🌿 モーダル中身（白い枠） */
+    .modal-content {
+      position: relative;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 30px;
+      width: 60%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
       text-align: center;
-      padding: 50px 0;
-      color: #7a8a80;
-      font-size: 14px;
+      animation: zoomIn 0.3s ease;
+      scrollbar-width: none;
     }
+    .modal-content::-webkit-scrollbar { display: none; }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.8rem;
+      color: #9bcfb0;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .back-btn-container { text-align: center; margin: 50px 0 60px; }
   </style>
 </head>
 <body>
@@ -123,7 +134,7 @@
 
   <main class="works">
     <div class="work-item">
-      <img src="images/banner1.jpg" alt="美容液キャンペーンバナー">
+      <img src="images/banner1.jpg" class="work-img" data-title="UVの広告バナー" data-desc="モデルは生成AIで、架空の広告デザインとして制作しました。">
       <div class="text">
         <h2>UVの広告バナー</h2>
         <p>モデルは生成AIで、架空の広告デザインとして制作しました。</p>
@@ -131,15 +142,15 @@
     </div>
 
     <div class="work-item">
-      <img src="images/banner2.jpg" alt="カフェフェア告知バナー">
+      <img src="images/banner2.jpg" class="work-img" data-title="美容液のLINE配信用イメージ" data-desc="ターゲットは30〜40代の女性、毛穴ケア・美白・ハリを求める層をイメージしました。">
       <div class="text">
         <h2>美容液のLINE配信用イメージ</h2>
-        <p>ターゲットは30〜40代の女性、毛穴ケア・美白・ハリを求める層をイメージしました。</p>
+        <p>ターゲットは30〜40代の女性をイメージしました。</p>
       </div>
     </div>
 
     <div class="work-item">
-      <img src="images/banner3.jpg" alt="旅行セールバナー">
+      <img src="images/banner3.jpg" class="work-img" data-title="美容バナー" data-desc="エイジングケアを意識して制作しました。">
       <div class="text">
         <h2>美容バナー</h2>
         <p>エイジングケアを意識して制作しました。</p>
@@ -147,54 +158,97 @@
     </div>
 
     <div class="work-item">
-      <img src="images/banner4.jpg" alt="スキンケアブランドバナー">
+      <img src="images/banner4.jpg" class="work-img" data-title="美容バナー" data-desc="手書き風文字で、親しみやすさを表現しました。">
       <div class="text">
         <h2>美容バナー</h2>
-        <p>手書き風文字で、親しみやすさを表現しました。<br>色味や、細かい部分のデザイン調整にこだわりました。</p>
+        <p>手書き風文字で、親しみやすさを表現しました。</p>
       </div>
     </div>
 
-     <div class="work-item">
-      <img src="images/banner5.jpg" alt="美容液キャンペーンバナー">
+    <div class="work-item">
+      <img src="images/banner5.jpg" class="work-img" data-title="ポイント10倍" data-desc="10倍のインパクトをポイントに作成しました。">
       <div class="text">
         <h2>ポイント10倍</h2>
         <p>10倍のインパクトをポイントに作成しました。</p>
       </div>
     </div>
 
-     <div class="work-item">
-      <img src="images/banner6.jpg" alt="美容液キャンペーンバナー">
+    <div class="work-item">
+      <img src="images/banner6.jpg" class="work-img" data-title="楽天用サムネイル" data-desc="めんたいこギフト広告で高級感・贈答用イメージの訴求しました。">
       <div class="text">
         <h2>楽天用サムネイル</h2>
-        <p>めんたいこギフト広告で高級感・贈答用イメージの訴求しました。<br>楽天用第一サムネイルとして作成しました。</p>
+        <p>贈答用イメージの訴求しました。</p>
       </div>
     </div>
 
     <div class="work-item">
-      <img src="images/banner7.jpg" alt="美容液キャンペーンバナー">
+      <img src="images/banner7.jpg" class="work-img" data-title="美容・インナーウェア広告" data-desc="睡眠時のバストケアをイメージ。安心感・夜のリラックス感を演出しました。">
       <div class="text">
         <h2>美容・インナーウェア広告</h2>
-        <p>睡眠時のバストケアをイメージしました。<br>安心感・夜のリラックス感を演出しました。</p>
-      </div>
-    </div>
-
-     <div class="work-item">
-      <img src="images/banner8.jpg" alt="美容液キャンペーンバナー">
-      <div class="text">
-        <h2>マスクの広告</h2>
-        <p>ウイルスから体を守ることと、緊迫した雰囲気をだしました。</p>
+        <p>睡眠時のバストケアをイメージしました。</p>
       </div>
     </div>
 
     <div class="work-item">
-      <img src="images/banner9.jpg" alt="美容液キャンペーンバナー">
+      <img src="images/banner8.jpg" class="work-img" data-title="マスクの広告" data-desc="ウイルスから体を守ることと、緊迫した雰囲気をだしました。">
+      <div class="text">
+        <h2>マスクの広告</h2>
+        <p>緊迫した雰囲気をだしました。</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="images/banner9.jpg" class="work-img" data-title="UVの広告" data-desc="シンプルかつ伝わりやすい構成を目指しました。">
       <div class="text">
         <h2>UVの広告</h2>
         <p></p>
       </div>
     </div>
-
   </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modal-img" src="">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.work-img');
+    const modal = document.getElementById('modal');
+    const modalContent = document.querySelector('.modal-content');
+    const modalImg = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const closeBtn = document.querySelector('.close');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        modalTitle.textContent = img.dataset.title;
+        modalDesc.textContent = img.dataset.desc;
+        
+        // ★ 常に一番上から表示させる命令
+        if (modalContent) {
+          modalContent.scrollTop = 0;
+        }
+        
+        document.body.style.overflow = 'hidden'; 
+      });
+    });
+
+    const closeModal = () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  </script>
+
   <div class="back-btn-container">
     <a href="index.html" class="back-btn">← 戻る</a>
   </div>
